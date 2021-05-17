@@ -51,10 +51,4 @@ public class Logic {
     }
 
 
-    public Icon getIcon(int index) {
-        int width = 120, height = 170;
-        String dictionary = "/Icon/icon" + index + ".jpg";
-        Image image = new ImageIcon(Objects.requireNonNull(getClass().getResource(dictionary))).getImage();
-        return new ImageIcon(image.getScaledInstance(width, height, Image.SCALE_SMOOTH));
-    }
 }

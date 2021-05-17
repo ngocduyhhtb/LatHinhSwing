@@ -122,7 +122,6 @@ public class LatHinh extends JFrame {
         startGame.addActionListener(e -> {
             timeThread.setForceStop(false);
             timeThread.wakeup();
-            System.out.println(1111);
         });
         Main.add(startGame);
         jFrame.add(new MainScreen(), BorderLayout.CENTER);
