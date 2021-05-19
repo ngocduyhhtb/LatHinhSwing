@@ -1,4 +1,4 @@
-package Model;
+package Component;
 
 import java.awt.Color;
 import javax.swing.*;

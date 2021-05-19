@@ -1,8 +1,7 @@
-package View;
+import View.MainScreen;
 
-import Model.*;
 public class Main {
     public static void main(String[] args) {
-        new LatHinh(0, 100);
+        new MainScreen(1, 0);
     }
 }

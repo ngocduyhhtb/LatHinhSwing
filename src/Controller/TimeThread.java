@@ -1,44 +1,51 @@
 package Controller;
 
 import Config.Config;
+import Component.ProgressBar;
+import View.DialogNewGame;
 
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class TimeThread extends Thread {
-    private final TimeThreadController timeThreadController;
-    private volatile boolean forceStop = true;
 
-    public TimeThreadController getTimeThreadController() {
-        return timeThreadController;
+    private final ProgressBar progressBar = new ProgressBar(0, Config.maxTime);
+    private JFrame frame;
+    private volatile boolean isForceStop = false;
+
+    public TimeThread(JFrame frame) {
+        this.frame = frame;
+
     }
 
-    public boolean isForceStop() {
-        return forceStop;
+    public ProgressBar getProgressBar() {
+        return progressBar;
     }
 
     public void setForceStop(boolean forceStop) {
-        this.forceStop = forceStop;
+        isForceStop = forceStop;
     }
 
-    public TimeThread(TimeThreadController timeThreadController) {
-        this.timeThreadController = timeThreadController;
-    }
-    public void wakeup(){
-        timeThreadController.wakeup();
-    }
     @Override
     public synchronized void run() {
         do {
-            if (forceStop) {
-                timeThreadController.hold();
-            }
+            progressBar.setValue(++Config.time);
             try {
                 TimeUnit.MILLISECONDS.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Config.time++;
-            System.out.println(Config.time);
-        } while (Config.time != Config.maxTime);
+        } while (Config.time <= Config.maxTime && !isForceStop);
+        _newGame();
+    }
+
+    private void _newGame()
+    {
+
+        if (!isForceStop)
+        {
+            DialogNewGame dialogNewGame = new DialogNewGame("XuanBach con cua bo PhamTienHai", "1234", frame);
+            dialogNewGame.newDialog(false, 1);
+        }
     }
 }

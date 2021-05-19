@@ -1,10 +1,8 @@
-package Model;
+package Component;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.TimerTask;
@@ -27,11 +25,12 @@ public class Button extends JButton {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
+                System.out.println(getWidth()+"  "+getHeight());
                 setIconImage(baseIndex, getWidth(), getHeight());
             }
         };
         Timer timer = new Timer("Timer");
-        timer.schedule(timerTask, 1000L);
+        timer.schedule(timerTask, 200L);
     }
 
     public int getValue() {
@@ -57,15 +56,9 @@ public class Button extends JButton {
 
     private Image _getIconButton(int index, int width, int height) {
         String directory = "src/Icon/icon" + index + ".jpg";
+        ImageIcon icon = new ImageIcon(directory);
         Image img = null;
-
-        try {
-            img = ImageIO.read(new File(directory));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert img != null;
-        img = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+        img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
 
         return img;
     }

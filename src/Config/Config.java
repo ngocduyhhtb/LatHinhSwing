@@ -12,6 +12,7 @@ public class Config {
     public static final int[][] a = new int[maxXY][maxXY];
     public static final boolean loss = false;
     public static final int BOM = 0, dem = 0;
-    public static final int m = 2, n = 3;
+    public static int m = 2, n = 3;
+    public static int lv = 1;
     public static int time = 0;
 }
