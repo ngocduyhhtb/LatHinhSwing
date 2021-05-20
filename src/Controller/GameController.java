@@ -13,21 +13,23 @@ public class GameController {
     private final ScoreButton scoreButton;
     private final TimeThread timeThread;
     private final ArrayList<Button> openButtons;
+    private final ArrayList<Button> buttons;
     int totalButtons;
     int[] state = new int[2];
     int count = 0;
 
-    public GameController(ArrayList<Button> openButtons, JFrame frame, TimeThread timeThread, ScoreButton scoreButton) {
+    public GameController(ArrayList<Button> openButtons, ArrayList<Button> buttons, JFrame frame, TimeThread timeThread, ScoreButton scoreButton) {
         this.timeThread = timeThread;
         this.scoreButton = scoreButton;
         this.dialogNewGame = new DialogNewGame("Chubedan con cua bo PhamTienHai", "1234", frame);
         this.openButtons = openButtons;
+        this.buttons = buttons;
 
         totalButtons = Config.n * Config.m;
     }
 
     public void flipCard(Button button) {
-        if (Config.time > 30) {
+        if (Config.time > 30 || button.isPause()) {
             return;
         }
         if (Config.time == 0) {
@@ -59,4 +61,5 @@ public class GameController {
             dialogNewGame.newDialog(true, ++Config.lv);
         }
     }
+
 }

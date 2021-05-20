@@ -2,9 +2,8 @@ package View;
 
 import Config.Config;
 import Controller.GameController;
-import Controller.TimeThread;
 import Component.Button;
-import Component.ScoreButton;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,11 +11,12 @@ import java.util.ArrayList;
 
 public class GameScreen extends JPanel {
     private GameController gameController;
-    ArrayList<Button> openButtons = new ArrayList<>();
+    private final ArrayList<Button> buttons;
 
 
-    public GameScreen(JFrame frame, TimeThread timeThread, ScoreButton scoreButton) {
-        gameController = new GameController(openButtons, frame, timeThread, scoreButton);
+    public GameScreen(GameController gameController, ArrayList<Button> buttons) {
+        this.gameController = gameController;
+        this.buttons = buttons;
 
         this.setLayout(new GridLayout(Config.m, Config.n));
         for (int i = 0; i < Config.m; i++) {
@@ -24,6 +24,7 @@ public class GameScreen extends JPanel {
                 Button button = new Button(false, 80, 100, Config.a[i][j]);
                 button.setMargin(new Insets(0, 0, 0, 0));
                 this.add(button);
+                buttons.add(button);
                 button.addActionListener(e -> {
                     gameController.flipCard(button);
                 });

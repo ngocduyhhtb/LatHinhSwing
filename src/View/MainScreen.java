@@ -1,12 +1,15 @@
 package View;
 
+import Controller.GameController;
 import Controller.MainController;
 import Controller.MenuController;
 import Controller.TimeThread;
 import Component.*;
+import Component.Button;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MainScreen extends JFrame {
     private TimeThread timeThread;
@@ -24,10 +27,16 @@ public class MainScreen extends JFrame {
         ScoreButton scoreButton = new ScoreButton(score);
         JButton startGame = new JButton("Start Game");
 
-        MenuController menuController = new MenuController(timeThread);
+        ArrayList<Button> buttons = new ArrayList<>();
+        ArrayList<Button> openButtons = new ArrayList<>();
+
+        MenuController menuController = new MenuController(timeThread, buttons, this);
         MenuScreen menuScreen = new MenuScreen(menuController, scoreButton, timeThread.getProgressBar(), startGame);
 
-        this.add(new GameScreen(this, timeThread, scoreButton), BorderLayout.CENTER);
+        GameController gameController = new GameController(openButtons, buttons, this, timeThread, scoreButton);
+        GameScreen gameScreen = new GameScreen(gameController, buttons);
+
+        this.add(gameScreen, BorderLayout.CENTER);
         this.add(menuScreen, BorderLayout.SOUTH);
 
         this.setVisible(true);

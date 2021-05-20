@@ -13,12 +13,22 @@ public class Button extends JButton {
     private int baseIndex = 0;
     private int closeIndex = -1;
     private int value;
-    private boolean isOpen = true;
+    private boolean isPause = false;
 
     public Button(boolean border, int width, int height, int value) {
         super();
         this.value = value;
         _draw(baseIndex, border, width, height);
+    }
+
+    public boolean isPause()
+    {
+        return isPause;
+    }
+
+    public void setPause(boolean isPause)
+    {
+        this.isPause = isPause;
     }
 
     public void goBack() {

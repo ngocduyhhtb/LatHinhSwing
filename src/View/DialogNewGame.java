@@ -5,8 +5,8 @@ import Model.NewGame;
 import javax.swing.*;
 
 public class DialogNewGame extends JOptionPane {
-    private String message, title;
-    JFrame frame;
+    private final String message, title;
+    private final JFrame frame;
 
     public DialogNewGame(String message, String title, JFrame frame) {
         this.message = message;

@@ -10,17 +10,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuScreen extends JPanel{
+public class MenuScreen extends JPanel {
     private final MenuController menuController;
     private final ScoreButton scoreButton;
     private final ProgressBar progressBar;
-    private final JButton startGame;
+    private final JButton startGameButton;
+    private final JButton level;
+    private final JButton controlButton;
 
-    public MenuScreen(MenuController menuController, ScoreButton scoreButton, ProgressBar progressBar, JButton startGame) {
+    public MenuScreen(MenuController menuController, ScoreButton scoreButton, ProgressBar progressBar, JButton startGameButton) {
         this.menuController = menuController;
         this.scoreButton = scoreButton;
         this.progressBar = progressBar;
-        this.startGame = startGame;
+        this.startGameButton = startGameButton;
+
+        level = new JButton(String.valueOf(Config.lv));
+        controlButton = new JButton("Pause");
+
         _initGUI();
         _addEvent();
     }
@@ -29,16 +35,23 @@ public class MenuScreen extends JPanel{
         scoreButton.setPreferredSize(new Dimension(70, 30));
         this.add(scoreButton);
         this.add(progressBar);
-        this.add(startGame);
-        this.add(new JButton(String.valueOf(Config.lv)));
+        this.add(startGameButton);
+        this.add(controlButton);
+        this.add(level);
     }
 
-    private void _addEvent()
-    {
-        startGame.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                menuController.start();
+    private void _addEvent() {
+        startGameButton.addActionListener(e -> {
+            menuController.start();
+        });
+
+        controlButton.addActionListener(e -> {
+            if (controlButton.getText().equals("Pause")) {
+                menuController.pause();
+                controlButton.setText("Resume");
+            } else {
+                menuController.resume();
+                controlButton.setText("Pause");
             }
         });
     }
