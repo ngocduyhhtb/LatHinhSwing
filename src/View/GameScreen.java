@@ -21,7 +21,7 @@ public class GameScreen extends JPanel {
         this.setLayout(new GridLayout(Config.m, Config.n));
         for (int i = 0; i < Config.m; i++) {
             for (int j = 0; j < Config.n; j++) {
-                Button button = new Button(false, 80, 100, Config.a[i][j]);
+                Button button = new Button(false, 100, 130, Config.a[i][j]);
                 button.setMargin(new Insets(0, 0, 0, 0));
                 this.add(button);
                 buttons.add(button);

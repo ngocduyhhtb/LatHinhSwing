@@ -1,20 +1,20 @@
 package Controller;
 
+import Component.SaveGame;
 import Config.Config;
 import Component.ProgressBar;
 import View.DialogNewGame;
+import View.MenuScreen;
 
 import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class TimeThread extends Thread {
-
     private final ProgressBar progressBar = new ProgressBar(0, Config.maxTime);
     private final ThreadController threadController;
-    private JFrame frame;
+    private final JFrame frame;
     private volatile boolean isForceStop = false;
     private volatile boolean isForcePause = false;
-
     public TimeThread(JFrame frame) {
         this.frame = frame;
         this.threadController = new ThreadController();
@@ -24,8 +24,7 @@ public class TimeThread extends Thread {
         this.isForcePause = isForcePause;
     }
 
-    public boolean isForcePause()
-    {
+    public boolean isForcePause() {
         return isForcePause;
     }
 
@@ -56,8 +55,7 @@ public class TimeThread extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (isForcePause)
-            {
+            if (isForcePause) {
                 threadController.hold();
             }
         } while (Config.time <= Config.maxTime && !isForceStop);
@@ -65,10 +63,9 @@ public class TimeThread extends Thread {
     }
 
     private void _newGame() {
-
         if (!isForceStop) {
-            DialogNewGame dialogNewGame = new DialogNewGame("XuanBach con cua bo PhamTienHai", "1234", frame);
-            dialogNewGame.newDialog(false, 1);
+            DialogNewGame dialogNewGame = new DialogNewGame("Do you want play new game?", "Time out", frame);
+            dialogNewGame.newDialog(false, 1, 0);
         }
     }
 }

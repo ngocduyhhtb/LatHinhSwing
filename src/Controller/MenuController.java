@@ -1,6 +1,7 @@
 package Controller;
 
 import Component.Button;
+import Component.ScoreButton;
 import Config.Config;
 import Model.NewGame;
 
@@ -11,11 +12,13 @@ public class MenuController {
     private final TimeThread timeThread;
     private final ArrayList<Button> buttons;
     private final JFrame frame;
+    private final ScoreButton scoreButton;
 
-    public MenuController(TimeThread timeThread, ArrayList<Button> buttons, JFrame frame) {
+    public MenuController(TimeThread timeThread, ArrayList<Button> buttons, JFrame frame, ScoreButton scoreButton) {
         this.timeThread = timeThread;
         this.buttons = buttons;
         this.frame = frame;
+        this.scoreButton = scoreButton;
     }
 
     public void start() {
@@ -51,5 +54,9 @@ public class MenuController {
         }
         timeThread.setForcePause(false);
         timeThread.wake();
+    }
+
+    public String getScore() {
+        return scoreButton.getText();
     }
 }

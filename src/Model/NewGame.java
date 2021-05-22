@@ -1,6 +1,7 @@
 package Model;
 
 import Config.Config;
+import Controller.MenuController;
 import View.MainScreen;
 
 import javax.swing.*;

@@ -18,13 +18,12 @@ public class GameController {
     int[] state = new int[2];
     int count = 0;
 
-    public GameController(ArrayList<Button> openButtons, ArrayList<Button> buttons, JFrame frame, TimeThread timeThread, ScoreButton scoreButton) {
+    public GameController(ArrayList<Button> openButtons, ArrayList<Button> buttons, JFrame frame, TimeThread timeThread, ScoreButton scoreButton, MenuController menuController) {
         this.timeThread = timeThread;
         this.scoreButton = scoreButton;
-        this.dialogNewGame = new DialogNewGame("Chubedan con cua bo PhamTienHai", "1234", frame);
+        this.dialogNewGame = new DialogNewGame("Start next game?", "Round complete", frame);
         this.openButtons = openButtons;
         this.buttons = buttons;
-
         totalButtons = Config.n * Config.m;
     }
 
@@ -58,8 +57,7 @@ public class GameController {
         }
         if (totalButtons == 0) {
             timeThread.setForceStop(true);
-            dialogNewGame.newDialog(true, ++Config.lv);
+            dialogNewGame.newDialog(true, ++Config.lv, Integer.parseInt(scoreButton.getText()));
         }
     }
-
 }
