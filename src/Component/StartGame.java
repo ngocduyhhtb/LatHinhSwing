@@ -49,9 +49,14 @@ public class StartGame extends JFrame {
         gameImage.setIcon(setIconImage(600, 300));
         this.add(gameImage);
         this.add(startGameMenu);
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+        int posX = (width-1000)/2;
+        int posY = (height-600)/2;
+        setLocation(posX, posY);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.pack();
     }
@@ -67,9 +72,7 @@ public class StartGame extends JFrame {
     private Image _getIconButton(int width, int height) {
         String directory = "src/Icon/logo.jpg";
         ImageIcon icon = new ImageIcon(directory);
-        Image img = null;
-        img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        return img;
+        return icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
     }
 }
 

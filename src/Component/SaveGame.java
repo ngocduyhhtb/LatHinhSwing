@@ -15,7 +15,7 @@ import Config.*;
 import Model.NewGame;
 
 public class SaveGame extends JFrame {
-    private boolean isNewGame;
+    private final boolean isNewGame;
     private final JButton saveButton;
     private final MenuController menuController;
     private final JTextField userTextField;

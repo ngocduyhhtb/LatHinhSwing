@@ -40,7 +40,14 @@ public class MainScreen extends JFrame {
         this.add(menuScreen, BorderLayout.SOUTH);
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+        int posX = (width-300)/2;
+        int posY = (height-30)/2;
+
+        setLocation(posX, posY);
         this.setResizable(false);
         this.pack();
     }

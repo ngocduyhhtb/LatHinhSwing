@@ -15,7 +15,7 @@ public class Button extends JButton {
     public Button(boolean border, int width, int height, int value) {
         super();
         this.value = value;
-        _draw(baseIndex, border, width, height);
+        _draw(border, width, height);
     }
 
     public boolean isPause()
@@ -48,12 +48,12 @@ public class Button extends JButton {
         this.value = value;
     }
 
-    private void _draw(int index, boolean border, int width, int height) {
+    private void _draw(boolean border, int width, int height) {
         this.setPreferredSize(new Dimension(width, height));
         if (border) {
             this.setBorder(BorderFactory.createLineBorder(Color.white, 3, false));
         }
-        setIconImage(index, width, height);
+        setIconImage(0, width, height);
     }
 
     public void setIconImage(int index, int width, int height) {

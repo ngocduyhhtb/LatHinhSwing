@@ -10,6 +10,7 @@ import java.awt.event.WindowListener;
 public class NewGame {
     public NewGame(int level, int score, boolean isContinue, JFrame frame) {
         if (isContinue) {
+            Config.maxTime += 15;
             if (Config.m < Config.n) {
                 Config.m++;
                 if ((Config.m * Config.n) % 2 != 0) {
