@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class StartGame extends JFrame {
     public StartGame() {
         JFrame frame = this;
-        this.setTitle("Valorant V2");
+        this.setTitle("Game Lat Hinh");
         this.setLayout(new FlowLayout());
         JButton startGameButton = new JButton("Start Game");
         startGameButton.addActionListener(e -> new NewGame(1, 0, false, frame));
@@ -42,8 +42,6 @@ public class StartGame extends JFrame {
         StartGameMenu startGameMenu = new StartGameMenu();
         startGameMenu.add(startGameButton);
         startGameMenu.add(playerHistory);
-        startGameButton.setMaximumSize(new Dimension(300, 30));
-        startGameButton.setMargin(new Insets(10, 10, 10, 10));
         playerHistory.setMaximumSize(new Dimension(300, 30));
         JLabel gameImage = new JLabel();
         gameImage.setIcon(setIconImage(600, 300));

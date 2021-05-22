@@ -30,9 +30,10 @@ public class GameController {
     }
 
     public void flipCard(Button button) {
-        if (Config.time > 30 || button.isPause()) {
+        if (Config.time > Config.maxTime || button.isPause()) {
             return;
         }
+        System.out.println(111);
         if (Config.time == 0) {
             timeThread.start();
         }

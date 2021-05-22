@@ -34,6 +34,12 @@ public class SaveGame extends JFrame {
         AddEvent();
         this.add(saveGamePanel);
         this.setLayout(new FlowLayout());
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+        int posX = (width - 560) / 2;
+        int posY = (height - 400) / 2;
+        setLocation(posX, posY);
         this.setVisible(true);
         this.setResizable(false);
         this.pack();

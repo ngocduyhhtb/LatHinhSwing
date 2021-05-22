@@ -18,13 +18,11 @@ public class Button extends JButton {
         _draw(border, width, height);
     }
 
-    public boolean isPause()
-    {
+    public boolean isPause() {
         return isPause;
     }
 
-    public void setPause(boolean isPause)
-    {
+    public void setPause(boolean isPause) {
         this.isPause = isPause;
     }
 
@@ -32,7 +30,6 @@ public class Button extends JButton {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println(getWidth()+"  "+getHeight());
                 setIconImage(baseIndex, getWidth(), getHeight());
             }
         };
@@ -64,9 +61,6 @@ public class Button extends JButton {
     private Image _getIconButton(int index, int width, int height) {
         String directory = "src/Icon/icon" + index + ".jpg";
         ImageIcon icon = new ImageIcon(directory);
-        Image img = null;
-        img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-
-        return img;
+        return icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
     }
 }

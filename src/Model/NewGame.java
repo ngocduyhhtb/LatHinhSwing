@@ -10,16 +10,22 @@ import java.awt.event.WindowListener;
 public class NewGame {
     public NewGame(int level, int score, boolean isContinue, JFrame frame) {
         if (isContinue) {
-            Config.maxTime += 15;
-            if (Config.m < Config.n) {
-                Config.m++;
-                if ((Config.m * Config.n) % 2 != 0) {
-                    Config.m++;
-                }
-            } else {
-                Config.n++;
+            if (Config.lv < 5) {
+                Config.maxTime += 15;
             }
-        }else {
+            if (Config.lv >= 5 && Config.lv < 9) {
+                Config.maxTime += 25;
+            }
+            if (Config.lv >= 9) {
+                Config.maxTime += 30;
+            }
+            Config.n++;
+            if ((Config.m * Config.n) % 2 != 0) {
+                Config.n++;
+            } else if ((Config.n / Config.m) == 3) {
+                Config.m++;
+            }
+        } else {
             Config.m = 2;
             Config.n = 3;
         }
