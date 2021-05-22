@@ -7,6 +7,7 @@ import Model.NewGame;
 import javax.swing.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
 
 public class DialogNewGame extends JOptionPane {
     private final String message, title;
@@ -31,13 +32,13 @@ public class DialogNewGame extends JOptionPane {
     public void timeOut(boolean isContinue, int level, int score){
         int select = JOptionPane.showOptionDialog(null, message, title,
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        SaveGame saveGame;
         if (select == 0) {
-            SaveGame saveGame = new SaveGame(menuController, true);
-            saveGame.addWindowListener(new Event());
+            saveGame = new SaveGame(menuController, true);
         } else {
-            SaveGame saveGame = new SaveGame(menuController, false);
-            saveGame.addWindowListener(new Event());
+            saveGame = new SaveGame(menuController, false);
         }
+        saveGame.addWindowListener(new Event());
     }
 
     class Event implements WindowListener {

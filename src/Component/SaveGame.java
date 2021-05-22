@@ -48,7 +48,6 @@ public class SaveGame extends JFrame {
     public void AddEvent() {
         saveButton.addActionListener(new ActionListener() {
             DatabaseController databaseController;
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -62,7 +61,9 @@ public class SaveGame extends JFrame {
                     if (isNewGame) {
                         new NewGame(1, 0, false, new JFrame());
                     }
-                } catch (SQLException throwables) {
+                } catch (SQLException | ClassNotFoundException throwables) {
+                    new GameErrorHandle("Your action will not be save!", "Server error");
+                    System.out.println(111);
                     throwables.printStackTrace();
                 }
             }

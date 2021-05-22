@@ -6,17 +6,13 @@ import View.HallOfFame;
 import java.sql.*;
 
 public class DatabaseController {
-    private Connection connection;
-    private Statement statement;
+    private final Connection connection;
+    private final Statement statement;
 
-    public DatabaseController() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(DBConfig.mysqlUrl, DBConfig.mySqlUsername, DBConfig.mySqlPassword);
-            statement = connection.createStatement();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
+    public DatabaseController() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        connection = DriverManager.getConnection(DBConfig.databaseUrl, DBConfig.dataBaselUsername, DBConfig.dataBasePassword);
+        statement = connection.createStatement();
     }
 
     public HallOfFame getHistory() throws SQLException {
@@ -36,4 +32,5 @@ public class DatabaseController {
     public void closeConnection() throws SQLException {
         connection.close();
     }
+
 }

@@ -20,6 +20,7 @@ public class StartGame extends JFrame {
         JButton playerHistory = new JButton("History");
         playerHistory.addActionListener(new ActionListener() {
             DatabaseController databaseController;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -27,7 +28,8 @@ public class StartGame extends JFrame {
                     System.out.println("DB connected");
                     HallOfFame hallOfFame = databaseController.getHistory();
                     hallOfFame.display();
-                } catch (SQLException throwables) {
+                } catch (SQLException | ClassNotFoundException throwables) {
+                    new GameErrorHandle("Cannot get game history!", "Server error");
                     throwables.printStackTrace();
                 } finally {
                     try {
@@ -50,8 +52,8 @@ public class StartGame extends JFrame {
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
-        int posX = (width-1000)/2;
-        int posY = (height-600)/2;
+        int posX = (width - 1000) / 2;
+        int posY = (height - 600) / 2;
         setLocation(posX, posY);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
