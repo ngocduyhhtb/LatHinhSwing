@@ -49,10 +49,10 @@ public class StartGame extends JFrame {
         gameImage.setIcon(setIconImage(600, 300));
         this.add(gameImage);
         this.add(startGameMenu);
-        this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
         this.pack();
     }
 

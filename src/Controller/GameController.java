@@ -62,4 +62,5 @@ public class GameController {
             dialogNewGame.newDialog(true, ++Config.lv, Integer.parseInt(scoreButton.getText()));
         }
     }
+
 }
