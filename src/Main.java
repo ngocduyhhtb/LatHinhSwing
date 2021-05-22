@@ -1,7 +1,6 @@
-import View.MainScreen;
-
+import Component.StartGame;
 public class Main {
     public static void main(String[] args) {
-        new MainScreen(1, 0);
+        new StartGame();
     }
 }

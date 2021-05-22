@@ -61,9 +61,6 @@ public class StartGame extends JFrame {
         this.pack();
     }
 
-    public static void main(String[] args) {
-        new StartGame();
-    }
 
     public Icon setIconImage(int width, int height) {
         return new ImageIcon(_getIconButton(width, height));
