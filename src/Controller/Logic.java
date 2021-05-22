@@ -2,13 +2,6 @@ package Controller;
 
 import Config.Config;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.Objects;
-
 public class Logic {
     public static void createMatrix() {
         int N = Config.m * Config.n;

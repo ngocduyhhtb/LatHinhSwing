@@ -63,7 +63,7 @@ public class MenuScreen extends JPanel {
             }
         });
         saveGameButton.addActionListener(e -> {
-            new SaveGame(menuController);
+            new SaveGame(menuController, false);
         });
         menuButton.addActionListener(e -> {
             new StartGame();

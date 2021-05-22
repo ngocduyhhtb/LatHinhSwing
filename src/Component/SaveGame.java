@@ -1,7 +1,6 @@
 package Component;
 
 import Controller.DatabaseController;
-import Controller.GameController;
 import Controller.MenuController;
 
 import javax.swing.*;
@@ -13,14 +12,17 @@ import java.awt.event.FocusListener;
 import java.sql.SQLException;
 
 import Config.*;
+import Model.NewGame;
 
 public class SaveGame extends JFrame {
+    private boolean isNewGame;
     private final JButton saveButton;
     private final MenuController menuController;
     private final JTextField userTextField;
 
-    public SaveGame(MenuController menuController) {
+    public SaveGame(MenuController menuController, boolean isNewGame) {
         this.menuController = menuController;
+        this.isNewGame = isNewGame;
         JPanel saveGamePanel = new JPanel();
         saveGamePanel.setLayout(new FlowLayout());
         JLabel userLabel = new JLabel("Player name: ");
@@ -51,6 +53,9 @@ public class SaveGame extends JFrame {
                     databaseController.SaveGame(userName, score, Config.lv);
                     System.out.println("Game saved");
                     close();
+                    if (isNewGame) {
+                        new NewGame(1, 0, false, new JFrame());
+                    }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }

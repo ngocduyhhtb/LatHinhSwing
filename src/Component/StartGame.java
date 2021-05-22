@@ -1,7 +1,6 @@
 package Component;
 
 import Controller.DatabaseController;
-import Controller.MenuController;
 import Model.NewGame;
 import View.HallOfFame;
 

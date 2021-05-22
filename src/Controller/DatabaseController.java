@@ -1,5 +1,6 @@
 package Controller;
 
+import Config.DBConfig;
 import View.HallOfFame;
 
 import java.sql.*;
@@ -11,7 +12,7 @@ public class DatabaseController {
     public DatabaseController() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/lathinh", "root", "1234");
+            connection = DriverManager.getConnection(DBConfig.mysqlUrl, DBConfig.mySqlUsername, DBConfig.mySqlPassword);
             statement = connection.createStatement();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

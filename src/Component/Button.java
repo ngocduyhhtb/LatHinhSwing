@@ -1,17 +1,14 @@
 package Component;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.TimerTask;
 import java.util.Timer;
 
 public class Button extends JButton {
 
-    private int baseIndex = 0;
-    private int closeIndex = -1;
+    private final int baseIndex = 0;
+    private final int closeIndex = -1;
     private int value;
     private boolean isPause = false;
 

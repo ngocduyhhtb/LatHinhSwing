@@ -1,7 +1,6 @@
 package Model;
 
 import Config.Config;
-import Controller.MenuController;
 import View.MainScreen;
 
 import javax.swing.*;
@@ -9,7 +8,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 public class NewGame {
-    public NewGame(int k, int score, boolean isContinue, JFrame frame) {
+    public NewGame(int level, int score, boolean isContinue, JFrame frame) {
         if (isContinue) {
             if (Config.m < Config.n) {
                 Config.m++;
@@ -23,7 +22,7 @@ public class NewGame {
             Config.m = 2;
             Config.n = 3;
         }
-        MainScreen mainScreen = new MainScreen(k, score);
+        MainScreen mainScreen = new MainScreen(level, score);
         mainScreen.addWindowListener(new Event(frame));
     }
 
@@ -41,7 +40,7 @@ public class NewGame {
 
         @Override
         public void windowClosing(WindowEvent e) {
-
+            frame.dispose();
         }
 
         @Override

@@ -13,24 +13,26 @@ import java.util.ArrayList;
 public class MainScreen extends JFrame {
     private final TimeThread timeThread;
     private final MainController mainController;
-    public MainScreen(int k, int score) {
+    private MenuController menuController;
+    public MainScreen(int level, int score) {
         setTitle("Game Lat Hinh");
         this.setLayout(new FlowLayout());
         this.mainController = new MainController();
         this.timeThread = new TimeThread(this);
-        init(k, score);
+        init(level, score);
+        this.timeThread.setMenuController(this.menuController);
     }
 
 
-    public void init(int k, int score) {
-        mainController.setUp(k);
+    public void init(int level, int score) {
+        mainController.setUp(level);
         ScoreButton scoreButton = new ScoreButton(score);
         JButton startGame = new JButton("Start Game");
         JButton saveGame = new JButton("Save");
         JButton menuGame = new JButton("Menu Game");
         ArrayList<Button> buttons = new ArrayList<>();
         ArrayList<Button> openButtons = new ArrayList<>();
-        MenuController menuController = new MenuController(timeThread, buttons, this, scoreButton);
+        menuController = new MenuController(timeThread, buttons, this, scoreButton);
         MenuScreen menuScreen = new MenuScreen(menuController, scoreButton, timeThread.getProgressBar(), startGame, saveGame, menuGame, this);
         GameController gameController = new GameController(openButtons, buttons, this, timeThread, scoreButton, menuController);
         GameScreen gameScreen = new GameScreen(gameController, buttons);

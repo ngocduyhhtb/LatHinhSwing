@@ -25,7 +25,6 @@ public class MenuController {
         if (!timeThread.isForceStop() && Config.time == 0) {
             timeThread.start();
         } else {
-
             int select = JOptionPane.showOptionDialog(null, "Trò chơi đã bắt đầu, bạn có muốn chơi mới",
                     "Chơi mới",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);

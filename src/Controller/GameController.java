@@ -14,6 +14,7 @@ public class GameController {
     private final TimeThread timeThread;
     private final ArrayList<Button> openButtons;
     private final ArrayList<Button> buttons;
+    private final MenuController menuController;
     int totalButtons;
     int[] state = new int[2];
     int count = 0;
@@ -21,10 +22,11 @@ public class GameController {
     public GameController(ArrayList<Button> openButtons, ArrayList<Button> buttons, JFrame frame, TimeThread timeThread, ScoreButton scoreButton, MenuController menuController) {
         this.timeThread = timeThread;
         this.scoreButton = scoreButton;
-        this.dialogNewGame = new DialogNewGame("Start next game?", "Round complete", frame);
+        this.dialogNewGame = new DialogNewGame("Start next game?", "Round complete", frame, menuController);
         this.openButtons = openButtons;
         this.buttons = buttons;
         totalButtons = Config.n * Config.m;
+        this.menuController = menuController;
     }
 
     public void flipCard(Button button) {
