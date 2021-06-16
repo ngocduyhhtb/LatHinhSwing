@@ -1,3 +1,5 @@
-.idea
-LatHinh.iml
-out
+./.idea
+./LatHinh.iml
+./out
+./.gitignore
+./LatHinhSwingUI.iml

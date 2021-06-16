@@ -35,8 +35,8 @@ public class StartGame extends JFrame {
                     try {
                         databaseController.closeConnection();
                         System.out.println("DB disconnected");
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
+                    } catch (SQLException throwable) {
+                        throwable.printStackTrace();
                     }
                 }
             }

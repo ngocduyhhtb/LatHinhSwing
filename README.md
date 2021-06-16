@@ -1,10 +1,12 @@
 "# LatHinhSwingUI"
 
-Author: nDuy, Minh Dat
-Technology: Java, MySQL
+Tác giả: Đào Ngọc Duy, Lê Minh Đạt <br>
+Công nghệ: Java, SwingUI, MySQL
+<br>
+Yêu cầu: JDK 8+ <br>
+Hướng dẫn chơi game: Khởi chạy file LatHinh.jar tại thư mục gốc của trò chơi
+<br>
 
-How to use?
-IDE: Inteliji </br>
-Import MySqlConnector to Project Library </br>
-Run sqlexport </br>
-Run application
+
+
+
